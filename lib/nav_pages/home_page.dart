@@ -1,5 +1,6 @@
 import 'package:cubitstate/colors.dart';
 import 'package:cubitstate/widgets/app_large_text.dart';
+import 'package:cubitstate/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var images = {
+    'balloning.png': 'Walking Tours',
+    'hiking.png': 'Hiking',
+    'kayaking.png': 'kayaking',
+    'snorkling.png': 'Snorkling',
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -37,13 +45,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               ],
             ),
           ),
-          const SizedBox(height: 40),
+          const SizedBox(height: 10),
           //Discover Text
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: AppLargeText(text: 'Discover'),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 10),
           //Tab bar
           Container(
             child: Align(
@@ -66,17 +74,89 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           Container(
+            padding: const EdgeInsets.only(left: 20),
             height: 300,
             width: double.maxFinite,
             child: TabBarView(
               controller: _tabController,
-              children: const [
-                Text('Hi'),
+              children: [
+                ListView.builder(
+                  itemCount: 3,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: const EdgeInsets.only(right: 15, top: 10),
+                      width: 200,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                        image: DecorationImage(
+                            image: AssetImage('images/sarajevo2.jpg'),
+                            fit: BoxFit.cover),
+                      ),
+                    );
+                  },
+                ),
                 Text('There'),
                 Text('Bye'),
               ],
             ),
           ),
+          const SizedBox(height: 30),
+          Container(
+            margin: const EdgeInsets.only(left: 20, right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                AppLargeText(
+                  text: 'Explore more',
+                  size: 22,
+                ),
+                AppText(
+                  text: 'See all',
+                  color: AppColors.textColor1,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Container(
+            height: 120,
+            width: double.maxFinite,
+            margin: const EdgeInsets.only(left: 20),
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (_, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(right: 30),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'images/' + images.keys.elementAt(index)),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Container(
+                          child: AppText(
+                            text: images.values.elementAt(index),
+                            color: AppColors.textColor2,
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }),
+          )
         ],
       ),
     );
