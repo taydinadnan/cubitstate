@@ -2,6 +2,7 @@ import 'package:cubitstate/colors.dart';
 import 'package:cubitstate/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ResponsiveButton extends StatelessWidget {
   bool? isResponsive;
   double? width;

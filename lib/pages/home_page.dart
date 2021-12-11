@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             padding: const EdgeInsets.only(top: 70, left: 20),
             child: Row(
               children: [
-                Icon(Icons.menu, size: 30, color: Colors.black54),
+                const Icon(Icons.menu, size: 30, color: Colors.black54),
                 Expanded(child: Container()),
                 Container(
                   margin: const EdgeInsets.only(right: 20),
@@ -53,24 +53,22 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           ),
           const SizedBox(height: 10),
           //Tab bar
-          Container(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: TabBar(
-                labelPadding: const EdgeInsets.only(left: 20, right: 20),
-                controller: _tabController,
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.grey,
-                isScrollable: true,
-                indicatorSize: TabBarIndicatorSize.label,
-                indicator:
-                    CircleTabIndicator(color: AppColors.mainColor, radius: 4),
-                tabs: const [
-                  Tab(text: "Places"),
-                  Tab(text: "Inspiration"),
-                  Tab(text: "Emotions"),
-                ],
-              ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: TabBar(
+              labelPadding: const EdgeInsets.only(left: 20, right: 20),
+              controller: _tabController,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              isScrollable: true,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicator:
+                  CircleTabIndicator(color: AppColors.mainColor, radius: 4),
+              tabs: const [
+                Tab(text: "Places"),
+                Tab(text: "Inspiration"),
+                Tab(text: "Emotions"),
+              ],
             ),
           ),
           Container(
@@ -91,15 +89,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
-                        image: DecorationImage(
+                        image: const DecorationImage(
                             image: AssetImage('images/sarajevo2.jpg'),
                             fit: BoxFit.cover),
                       ),
                     );
                   },
                 ),
-                Text('There'),
-                Text('Bye'),
+                const Text('There'),
+                const Text('Bye'),
               ],
             ),
           ),
@@ -146,11 +144,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Container(
-                          child: AppText(
-                            text: images.values.elementAt(index),
-                            color: AppColors.textColor2,
-                          ),
+                        AppText(
+                          text: images.values.elementAt(index),
+                          color: AppColors.textColor2,
                         )
                       ],
                     ),
@@ -164,6 +160,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 }
 
 //drawing Circle Tab indicator
+// ignore: must_be_immutable
 class CircleTabIndicator extends Decoration {
   final Color color;
   double radius;
@@ -171,6 +168,7 @@ class CircleTabIndicator extends Decoration {
 
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
+    // ignore: todo
     // TODO: implement createBoxPainter
     return _CirclePainter(color: color, radius: radius);
   }

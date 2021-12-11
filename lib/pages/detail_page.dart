@@ -6,7 +6,7 @@ import 'package:cubitstate/widgets/responsive_button.dart';
 import 'package:flutter/material.dart';
 
 class DetailedPage extends StatefulWidget {
-  DetailedPage({Key? key}) : super(key: key);
+  const DetailedPage({Key? key}) : super(key: key);
 
   @override
   _DetailedPageState createState() => _DetailedPageState();
@@ -18,7 +18,7 @@ class _DetailedPageState extends State<DetailedPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.maxFinite,
         height: double.maxFinite,
         child: Stack(
@@ -77,7 +77,8 @@ class _DetailedPageState extends State<DetailedPage> {
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        Icon(Icons.location_on, color: AppColors.mainColor),
+                        const Icon(Icons.location_on,
+                            color: AppColors.mainColor),
                         const SizedBox(width: 5),
                         AppText(
                             text: 'BiH, Sarajevo', color: AppColors.textColor1)

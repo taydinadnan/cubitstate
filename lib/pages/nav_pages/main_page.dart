@@ -6,7 +6,7 @@ import 'my_page.dart';
 import 'search_page.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key? key}) : super(key: key);
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -14,10 +14,10 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   List pages = [
-    HomePage(),
-    BarItemPage(),
-    SearchPage(),
-    MyPage(),
+    const HomePage(),
+    const BarItemPage(),
+    const SearchPage(),
+    const MyPage(),
   ];
   int currentIndex = 0;
   void onTap(int index) {
@@ -45,18 +45,22 @@ class _MainPageState extends State<MainPage> {
         elevation: 0,
         items: const [
           BottomNavigationBarItem(
+            // ignore: deprecated_member_use
             title: Text('Home'),
             icon: Icon(Icons.apps),
           ),
           BottomNavigationBarItem(
+            // ignore: deprecated_member_use
             title: Text('Bar'),
             icon: Icon(Icons.bar_chart_sharp),
           ),
           BottomNavigationBarItem(
+            // ignore: deprecated_member_use
             title: Text('Search'),
             icon: Icon(Icons.search),
           ),
           BottomNavigationBarItem(
+            // ignore: deprecated_member_use
             title: Text('My'),
             icon: Icon(Icons.person),
           ),
